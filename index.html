@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>V4MP | Minecraft Team</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:#00ff9d;
+    font-family:Courier New, monospace;
+}
+
+/* header */
+header{
+    text-align:center;
+    padding:40px;
+    font-size:40px;
+    text-shadow:0 0 10px #00ff9d;
+}
+
+/* section */
+section{
+    padding:30px;
+    max-width:900px;
+    margin:auto;
+}
+
+/* box panels */
+.panel{
+    border:1px solid #00ff9d;
+    padding:20px;
+    margin-bottom:30px;
+    box-shadow:0 0 10px #00ff9d;
+}
+
+/* button */
+button{
+    background:black;
+    color:#00ff9d;
+    border:1px solid #00ff9d;
+    padding:12px 20px;
+    cursor:pointer;
+    font-family:Courier New;
+}
+
+button:hover{
+    background:#00ff9d;
+    color:black;
+}
+
+/* terminal */
+#terminal{
+    background:#050505;
+    padding:15px;
+    height:200px;
+    overflow:auto;
+}
+
+#cmd{
+    width:100%;
+    background:black;
+    border:none;
+    color:#00ff9d;
+    font-family:Courier New;
+}
+
+/* footer */
+footer{
+    text-align:center;
+    padding:20px;
+    opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+V4MP Minecraft Team
+</header>
+
+<section>
+
+<div class="panel">
+<h2>About V4MP</h2>
+<p>
+We are <b>V4MP</b>, a Minecraft team focused on building, PvP, server domination,
+and creating powerful projects inside the Minecraft universe.
+</p>
+
+<p>
+We build highways, conquer servers, and push Minecraft to its limits.
+</p>
+</div>
+
+<div class="panel">
+<h2>Join Our Discord</h2>
+
+<p>Become part of the V4MP team.</p>
+
+<button onclick="window.open('https://discord.gg/YdfYBkQcyB')">
+Join Discord
+</button>
+</div>
+
+<div class="panel">
+<h2>Server Status</h2>
+
+<p id="status">Checking server status...</p>
+
+<script>
+/* fake status */
+setTimeout(()=>{
+document.getElementById("status").innerText =
+"ONLINE | Players: 12 | TPS: 20";
+},1500);
+</script>
+
+</div>
+
+<div class="panel">
+<h2>Team Console</h2>
+
+<div id="terminal">
+<p>> V4MP terminal initialized</p>
+<p>> Type commands below</p>
+</div>
+
+<input id="cmd" placeholder="type command..." onkeydown="runCommand(event)">
+
+</div>
+
+</section>
+
+<footer>
+V4MP Team | Minecraft Network
+</footer>
+
+<script>
+
+function runCommand(e){
+
+if(e.key === "Enter"){
+
+let cmd = e.target.value
+let terminal = document.getElementById("terminal")
+
+let line = document.createElement("p")
+line.innerText = "> " + cmd
+terminal.appendChild(line)
+
+if(cmd === "help"){
+terminal.innerHTML += "<p>Commands: help, team, discord</p>"
+}
+
+else if(cmd === "team"){
+terminal.innerHTML += "<p>V4MP is a Minecraft team focused on power and domination.</p>"
+}
+
+else if(cmd === "discord"){
+terminal.innerHTML += "<p>discord.gg/YdfYBkQcyB</p>"
+}
+
+else{
+terminal.innerHTML += "<p>Unknown command</p>"
+}
+
+terminal.scrollTop = terminal.scrollHeight
+e.target.value = ""
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
